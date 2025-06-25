@@ -9,7 +9,7 @@ public class MemberApp {
   public static void main(String[] args) {
     AppConfig appConfig = new AppConfig();
 
-    // NOTE: memberService()가 구현체를 넣어줌 => 의존성 주입(DI;Dependency Injection)
+    // NOTE: 런타임에 memberService()가 구현체를 넣어줌 => 의존성 주입(DI;Dependency Injection)
     MemberService memberService = appConfig.memberService();
 
     Member member = new Member(1L, "memberA", Grade.VIP);
