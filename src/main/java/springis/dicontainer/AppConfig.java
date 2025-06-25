@@ -1,7 +1,7 @@
 package springis.dicontainer;
 
 import springis.dicontainer.discount.DiscountPolicy;
-import springis.dicontainer.discount.FixDiscountPolicy;
+import springis.dicontainer.discount.RateDiscountPolicy;
 import springis.dicontainer.member.MemberRepository;
 import springis.dicontainer.member.MemberService;
 import springis.dicontainer.member.MemberServiceImpl;
@@ -18,7 +18,8 @@ public class AppConfig {
   }
 
   public DiscountPolicy discountPolicy() {
-    return new FixDiscountPolicy();
+//    return new FixDiscountPolicy();
+    return new RateDiscountPolicy();
   }
 
   public MemberService memberService() {
