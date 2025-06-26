@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="memRepo" class="springis.dicontainer.member.MemoryMemberRepository"/>
+
+  <bean id="discPol" class="springis.dicontainer.discount.RateDiscountPolicy"/>
+
+  <bean id="memServ" class="springis.dicontainer.member.MemberServiceImpl">
+    <constructor-arg name="memberRepository" ref="memRepo"/>
+  </bean>
+
+  <bean id="ordServ" class="springis.dicontainer.order.OrderServiceImpl">
+    <constructor-arg name="memberRepository" ref="memRepo"/>
+    <constructor-arg name="discountPolicy" ref="discPol"/>
+  </bean>
+
+</beans>
