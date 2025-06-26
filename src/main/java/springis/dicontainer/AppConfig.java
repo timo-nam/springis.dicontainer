@@ -1,5 +1,7 @@
 package springis.dicontainer;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import springis.dicontainer.discount.DiscountPolicy;
 import springis.dicontainer.discount.RateDiscountPolicy;
 import springis.dicontainer.member.MemberRepository;
@@ -13,21 +15,28 @@ import springis.dicontainer.order.OrderServiceImpl;
 // NOTE: 구성 영역은 조립 방식이 명확
 // NOTE: 구성 영역에서 실행 흐름에 대한 제어 => 제어의 역전(IoC;Inversion of Control) => 프레임워크
 // NOTE: 구성을 담당하는 프레임워크 기반을 IoC 컨테이너/DI 컨테이너/어셈블러/오브젝트 팩토리라고 함
+
+// NOTE: @Configuration + @Bean => 수동 애너테이션 기반 구성
+@Configuration
 public class AppConfig {
 
+  @Bean
   public MemberRepository memberRepository() {
     return new MemoryMemberRepository();
   }
 
+  @Bean
   public DiscountPolicy discountPolicy() {
 //    return new FixDiscountPolicy();
     return new RateDiscountPolicy();
   }
 
+  @Bean
   public MemberService memberService() {
     return new MemberServiceImpl(memberRepository());
   }
 
+  @Bean
   public OrderService orderService() {
     return new OrderServiceImpl(memberRepository(), discountPolicy());
   }

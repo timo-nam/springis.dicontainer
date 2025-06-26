@@ -1,5 +1,7 @@
 package springis.dicontainer;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import springis.dicontainer.member.Grade;
 import springis.dicontainer.member.Member;
 import springis.dicontainer.member.MemberService;
@@ -9,9 +11,9 @@ import springis.dicontainer.order.OrderService;
 public class OrderApp {
 
   public static void main(String[] args) {
-    AppConfig appConfig = new AppConfig();
-    MemberService memberService = appConfig.memberService();
-    OrderService orderService = appConfig.orderService();
+    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+    MemberService memberService = ac.getBean("memberService", MemberService.class);
+    OrderService orderService = ac.getBean("orderService", OrderService.class);
 
     long memberId = 1L;
 
