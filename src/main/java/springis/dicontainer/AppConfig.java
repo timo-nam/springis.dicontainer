@@ -17,6 +17,7 @@ import springis.dicontainer.order.OrderServiceImpl;
 // NOTE: 구성을 담당하는 프레임워크 기반을 IoC 컨테이너/DI 컨테이너/어셈블러/오브젝트 팩토리라고 함
 
 // NOTE: @Configuration + @Bean => 수동 애너테이션 기반 구성
+// NOTE: @Configuration 없으면 @Bean 메서드 간 직접 호출 시 싱글톤 보장 X
 @Configuration
 public class AppConfig {
 
