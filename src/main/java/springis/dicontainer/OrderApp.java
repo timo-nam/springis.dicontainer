@@ -11,6 +11,9 @@ import springis.dicontainer.order.OrderService;
 public class OrderApp {
 
   public static void main(String[] args) {
+    // NOTE: ApplicationContext extends BeanFactory
+    // NOTE: AnnotationConfigApplicationContext implements ApplicationContext
+    // NOTE: 진짜 순수하게 빈을 관리하는 역할은 BeanFactory
     ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
     MemberService memberService = ac.getBean("memberService", MemberService.class);
     OrderService orderService = ac.getBean("orderService", OrderService.class);
