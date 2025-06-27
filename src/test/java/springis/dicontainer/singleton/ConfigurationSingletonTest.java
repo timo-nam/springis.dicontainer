@@ -28,4 +28,15 @@ class ConfigurationSingletonTest {
     assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
     assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
   }
+
+  @Test
+  void configurationDeep() {
+    // NOTE: @Configuration을 보고 AppConfig$$SpringCGLIB$$0 클래스를 생성
+    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+    // NOTE: AppConfig$$SpringCGLIB$$0는 AppConfig의 자식 타입
+    AppConfig bean = ac.getBean(AppConfig.class);
+
+    System.out.println("bean = " + bean.getClass());
+  }
 }
