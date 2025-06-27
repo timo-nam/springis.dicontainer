@@ -12,6 +12,11 @@ public class MemberServiceImpl implements MemberService {
     this.memberRepository = memberRepository;
   }
 
+  // 검증용
+  public MemberRepository getMemberRepository() {
+    return memberRepository;
+  }
+
   @Override
   public void join(Member member) {
     memberRepository.save(member);
