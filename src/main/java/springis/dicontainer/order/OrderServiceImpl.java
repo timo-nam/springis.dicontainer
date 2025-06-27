@@ -1,12 +1,12 @@
 package springis.dicontainer.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import springis.dicontainer.discount.DiscountPolicy;
 import springis.dicontainer.member.Member;
 import springis.dicontainer.member.MemberRepository;
 
-@Component
+@Service
 public class OrderServiceImpl implements OrderService {
 
   private final MemberRepository memberRepository;
