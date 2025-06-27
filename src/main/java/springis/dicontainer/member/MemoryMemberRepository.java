@@ -2,7 +2,9 @@ package springis.dicontainer.member;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository {
 
   // NOTE: 동시성 이슈 때문에 ConcurrentHashMap으로 구현
