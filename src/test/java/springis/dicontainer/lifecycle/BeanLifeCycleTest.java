@@ -27,7 +27,8 @@ class BeanLifeCycleTest {
     // NOTE: 빈 생성과 초기화(무거운 동작)를 분리하는 것이 좋음
     // NOTE: destroyMethod는 기본값으로 "close" / "shutdown"을 추론
     // NOTE: 추론 기능을 안 쓰고 싶으면 destroyMethod = ""
-    @Bean(initMethod = "init"/* , destroyMethod = "close" */)
+//    @Bean(initMethod = "init"/* , destroyMethod = "close" */)
+    @Bean
     public NetworkClient networkClient() {
       NetworkClient networkClient = new NetworkClient();
       networkClient.setUrl("http://watalk.sbs.co.kr");
