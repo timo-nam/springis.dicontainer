@@ -1,5 +1,7 @@
 package springis.dicontainer.member;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 // NOTE: 인터페이스의 구현체가 하나라면 클래스 이름을 `*Impl`로 짓는 게 관례
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Service;
 // NOTE: 사용 영역은 로직에만 집중 => 아키텍처 수준에서는 SoC, 클래스 레벨에서는 SRP 준수
 
 // NOTE: @Service - 아무 부가 기능 없음
+@Getter
+@RequiredArgsConstructor
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -26,14 +30,9 @@ public class MemberServiceImpl implements MemberService {
   // NOTE: <생성자 주입> 생성자를 호출하는 외부에서 구현체를 선택
   // NOTE: 불변, 필수 의존 관계 주입
   // NOTE: 생성자가 1개면 @Autowired 생략 가능
-  public MemberServiceImpl(MemberRepository memberRepository) {
-    this.memberRepository = memberRepository;
-  }
-
-  // 검증용
-  public MemberRepository getMemberRepository() {
-    return memberRepository;
-  }
+//  public MemberServiceImpl(MemberRepository memberRepository) {
+//    this.memberRepository = memberRepository;
+//  }
 
   @Override
   public void join(Member member) {

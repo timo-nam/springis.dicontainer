@@ -1,13 +1,19 @@
 package springis.dicontainer.order;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import springis.dicontainer.discount.DiscountPolicy;
 import springis.dicontainer.member.Member;
 import springis.dicontainer.member.MemberRepository;
 
+// NOTE: Lombok + 생성자 주입
+@RequiredArgsConstructor
 @Service
 public class OrderServiceImpl implements OrderService {
 
+  // 검증용
+  @Getter
   private final MemberRepository memberRepository;
   private final DiscountPolicy discountPolicy;
 //  private MemberRepository memberRepository;
@@ -19,16 +25,6 @@ public class OrderServiceImpl implements OrderService {
 //    this.memberRepository = memberRepository;
 //    this.discountPolicy = discountPolicy;
 //  }
-
-  public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-    this.memberRepository = memberRepository;
-    this.discountPolicy = discountPolicy;
-  }
-
-  // 검증용
-  public MemberRepository getMemberRepository() {
-    return memberRepository;
-  }
 
   @Override
   public Order createOrder(Long memberId, String itemName, int itemPrice) {
