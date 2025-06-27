@@ -15,4 +15,16 @@ import org.springframework.context.annotation.FilterType;
 )
 public class AutoAppConfig {
 
+  // NOTE: 빈 이름 충돌(수동 vs 자동) => 수동 우선 => Overriding bean definition for bean
+  // NOTE: 스프링 부트에서는 수동-자동 충돌 시에도 오버라이드 하지 않고 오류 발생 => BeanDefinitionOverrideException
+//  @Bean
+//  public MemberRepository memoryMemberRepository() {
+//    return new MemoryMemberRepository();
+//  }
 }
+
+// NOTE: 빈 이름 충돌(자동 vs 자동) => ConflictingBeanDefinitionException
+//@Component
+//class OrderServiceImpl {
+//
+//}
