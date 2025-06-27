@@ -30,7 +30,9 @@ public class OrderServiceImpl implements OrderService {
 
   public OrderServiceImpl(
       MemberRepository memberRepository,
-      /*@Qualifier("mainDiscountPolicy")*/ DiscountPolicy discountPolicy
+      DiscountPolicy discountPolicy
+//      @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy
+//      @MainDiscountPolicy DiscountPolicy discountPolicy
   ) {
     this.memberRepository = memberRepository;
     this.discountPolicy = discountPolicy;

@@ -49,7 +49,8 @@ class TypeDuplicatedTest {
     }
 
     @Bean
-//    @Qualifier("mainDiscountPolicy")
+    // NOTE: @Qualifier를 래핑해서 컴파일 타임에 타입 체크
+//    @MainDiscountPolicy
     @Primary
     public DiscountPolicy rateDiscountPolicy() {
       return new RateDiscountPolicy();
