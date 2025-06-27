@@ -1,6 +1,5 @@
 package springis.dicontainer.member;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 // NOTE: 인터페이스의 구현체가 하나라면 클래스 이름을 `*Impl`로 짓는 게 관례
@@ -13,8 +12,9 @@ public class MemberServiceImpl implements MemberService {
 
   private final MemberRepository memberRepository;
 
-  // NOTE: 생성자를 호출하는 외부에서 구현체를 선택
-  @Autowired
+  // NOTE: 생성자를 호출하는 외부에서 구현체를 선택(생성자 주입)
+  // NOTE: 불변, 필수 의존 관계 주입
+  // NOTE: 생성자가 1개면 @Autowired 생략 가능
   public MemberServiceImpl(MemberRepository memberRepository) {
     this.memberRepository = memberRepository;
   }
