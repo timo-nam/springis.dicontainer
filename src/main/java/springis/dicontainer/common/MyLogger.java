@@ -5,9 +5,12 @@ import jakarta.annotation.PreDestroy;
 import java.util.UUID;
 import lombok.Setter;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-@Scope("request")
+// NOTE: ScopedProxyMode.TARGET_CLASS - 클래스에 적용
+// NOTE: ScopedProxyMode.INTERFACES - 인터페이스에 적용
+@Scope(scopeName = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Component
 public class MyLogger {
 
