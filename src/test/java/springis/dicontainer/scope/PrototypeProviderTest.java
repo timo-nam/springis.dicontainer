@@ -5,6 +5,7 @@ import jakarta.annotation.PreDestroy;
 import lombok.Getter;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,11 +30,14 @@ class PrototypeProviderTest {
   static class ClientBean {
 
     // NOTE: DI가 아니라 Dependency Lookup(의존성 탐색)
+    // NOTE: ObjectProvider = ObjectFactroy + 편의 기능
+    // NOTE: 딱 필요한 DL 기능만 제공
+    // NOTE: 스프링에서 제공하는 라이브러리
     @Autowired
-    private ApplicationContext ac;
+    private ObjectProvider<PrototypeBean> prototypeBeanProvider;
 
     public int logic() {
-      PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
+      PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
       prototypeBean.addCount();
       return prototypeBean.getCount();
     }
