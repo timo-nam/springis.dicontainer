@@ -2,10 +2,10 @@ package springis.dicontainer.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import lombok.Getter;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -34,10 +34,10 @@ class PrototypeProviderTest {
     // NOTE: 딱 필요한 DL 기능만 제공
     // NOTE: 스프링에서 제공하는 라이브러리
     @Autowired
-    private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+    private Provider<PrototypeBean> provider;
 
     public int logic() {
-      PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+      PrototypeBean prototypeBean = provider.get();
       prototypeBean.addCount();
       return prototypeBean.getCount();
     }
