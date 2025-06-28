@@ -36,6 +36,10 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.36'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
     // [END] Lombok 라이브러리 추가
+
+    // [BEGIN] jakarta.inject-api 라이브러리 추가
+    implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
+    // [END] jakarta.inject-api 라이브러리 추가
 }
 
 tasks.named('test') {
